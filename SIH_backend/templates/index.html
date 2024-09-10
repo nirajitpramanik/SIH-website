@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Deepfake Detection{% endblock %}
+
+{% block content %}
+    <h1>Deepfake Detection</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="video">Upload MP4 Video:</label>
+        <input type="file" id="video" name="video" accept="video/mp4" required>
+        <button type="submit">Check for Deepfake</button>
+    </form>
+
+    {% if result %}
+        <h2>Result: {{ result }}</h2>
+    {% endif %}
+{% endblock %}
